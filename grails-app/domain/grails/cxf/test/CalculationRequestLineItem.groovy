@@ -1,0 +1,16 @@
+package grails.cxf.test
+
+import javax.xml.bind.annotation.XmlAccessorType
+import javax.xml.bind.annotation.XmlAccessType
+import javax.xml.bind.annotation.XmlAttribute
+
+@XmlAccessorType(XmlAccessType.NONE)
+class CalculationRequestLineItem {
+
+    @XmlAttribute
+    Integer rate = 0
+
+    static constraints = {
+        rate blank: false
+    }
+}

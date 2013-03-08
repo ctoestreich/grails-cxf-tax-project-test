@@ -1,0 +1,1 @@
+Sample Project Showing grails 2.2.x with cxf 1.1.x
