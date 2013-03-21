@@ -31,6 +31,7 @@ grails.project.dependency.resolution = {
         mavenLocal()
         mavenCentral()
 
+        mavenRepo "https://oss.sonatype.org/content/groups/public/"
         // uncomment these (or add new ones) to enable remote dependency resolution from public Maven repositories
         //mavenRepo "http://snapshots.repository.codehaus.org"
         //mavenRepo "http://repository.codehaus.org"
@@ -42,6 +43,21 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 
         // runtime 'mysql:mysql-connector-java:5.1.22'
+        test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
+
+        test "org.gebish:geb-spock:0.9.0-RC-1"
+
+        test('org.seleniumhq.selenium:selenium-htmlunit-driver:2.25.0') {
+            excludes 'xmlbeans', 'spring-web', 'spring-core', 'xml-apis'
+        }
+
+        test('org.seleniumhq.selenium:selenium-chrome-driver:2.25.0') {
+            excludes 'xmlbeans', 'spring-web', 'spring-core', 'xml-apis'
+        }
+
+        test('org.seleniumhq.selenium:selenium-firefox-driver:2.25.0') {
+            excludes 'xmlbeans', 'spring-web', 'spring-core', 'xml-apis'
+        }
     }
 
     plugins {
@@ -60,5 +76,13 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.3.2"
 
         compile ':cache:1.0.1'
+
+        test(":geb:0.9.0-RC-1")
+
+        test(":spock:0.7") {
+            exclude "spock-grails-support"
+        }
+
+        compile ":wslite:0.7.2.0"
     }
 }

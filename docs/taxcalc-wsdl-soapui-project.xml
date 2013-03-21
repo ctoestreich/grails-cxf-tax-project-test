@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="taxcalc?wsdl" soapui-version="4.5.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="TaxcalcServiceServiceSoapBinding" type="wsdl" bindingName="{http://soap.oursite.com/}TaxcalcServiceServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/grails-cxf-test/services/taxcalc?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/grails-cxf-test/services/taxcalc?wsdl"><con:part><con:url>http://localhost:8080/grails-cxf-test/services/taxcalc?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="TaxcalcServiceService" targetNamespace="http://soap.oursite.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://soap.oursite.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://soap.oursite.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="calculateTax" type="tns:calculateTax"/>
+      <xs:element name="calculateTaxResponse" type="tns:calculateTaxResponse"/>
+      <xs:complexType name="calculateTax">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="taxCalcReq" type="tns:taxCalculationRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="taxCalculationRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="uuid" type="xs:string"/>
+          <xs:element minOccurs="0" name="originSystem" type="xs:string"/>
+          <xs:element minOccurs="0" name="originApplication" type="xs:string"/>
+          <xs:element minOccurs="0" name="version" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="writeTaxRegistry" type="xs:string"/>
+          <xs:element minOccurs="0" name="transactionDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="transactionType" type="xs:string"/>
+          <xs:element minOccurs="0" name="taxableAmount" type="xs:double"/>
+          <xs:element minOccurs="0" name="customerExempt" type="xs:string"/>
+          <xs:element minOccurs="0" name="orderNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="taxLocation" type="tns:taxCalculationTaxLocation"/>
+          <xs:element minOccurs="0" name="quantity" type="xs:double"/>
+          <xs:element minOccurs="0" name="extendedPrice" type="xs:double"/>
+          <xs:element minOccurs="0" name="freightAmt" type="xs:double"/>
+          <xs:element minOccurs="0" name="processedMillis" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="lineItems" type="tns:taxCalculationRequestLineItem"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="taxCalculationTaxLocation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="addressLine1" type="xs:string"/>
+          <xs:element minOccurs="0" name="addressLine2" type="xs:string"/>
+          <xs:element minOccurs="0" name="country" type="xs:string"/>
+          <xs:element minOccurs="0" name="city" type="xs:string"/>
+          <xs:element minOccurs="0" name="county" type="xs:string"/>
+          <xs:element minOccurs="0" name="stateOrProvince" type="xs:string"/>
+          <xs:element minOccurs="0" name="postalCode" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="taxCalculationRequestLineItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="type" type="xs:string"/>
+          <xs:element minOccurs="0" name="productId" type="xs:string"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="quantity" type="xs:int"/>
+          <xs:element minOccurs="0" name="amount" type="xs:double"/>
+          <xs:element minOccurs="0" name="extendedAmount" type="xs:double"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="calculateTaxResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="taxCalculationResponse" type="tns:taxCalculationResponse"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="taxCalculationResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="uuid" type="xs:string"/>
+          <xs:element minOccurs="0" name="originSystem" type="xs:string"/>
+          <xs:element minOccurs="0" name="originApplication" type="xs:string"/>
+          <xs:element minOccurs="0" name="version" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="returnCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="totalSalesTax" type="xs:string"/>
+          <xs:element minOccurs="0" name="combinedTaxRate" type="xs:string"/>
+          <xs:element minOccurs="0" name="stateTaxAmt" type="xs:string"/>
+          <xs:element minOccurs="0" name="countyTaxAmt" type="xs:string"/>
+          <xs:element minOccurs="0" name="cityTaxAmt" type="xs:string"/>
+          <xs:element minOccurs="0" name="localTaxAmt" type="xs:string"/>
+          <xs:element minOccurs="0" name="geoCodeIndicator" type="xs:string"/>
+          <xs:element minOccurs="0" name="transactionType" type="xs:string"/>
+          <xs:element minOccurs="0" name="transactionCode" type="xs:string"/>
+          <xs:element minOccurs="0" name="transactionDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="stateTaxInclusionFlag" type="xs:string"/>
+          <xs:element minOccurs="0" name="stateTaxRate" type="xs:string"/>
+          <xs:element minOccurs="0" name="stateRateInd" type="xs:string"/>
+          <xs:element minOccurs="0" name="stateTaxType" type="xs:double"/>
+          <xs:element minOccurs="0" name="countyTaxRate" type="xs:string"/>
+          <xs:element minOccurs="0" name="countyRateInd" type="xs:string"/>
+          <xs:element minOccurs="0" name="countyTaxType" type="xs:string"/>
+          <xs:element minOccurs="0" name="cityTaxRate" type="xs:string"/>
+          <xs:element minOccurs="0" name="cityRateInd" type="xs:string"/>
+          <xs:element minOccurs="0" name="cityTaxType" type="xs:string"/>
+          <xs:element minOccurs="0" name="localTaxRate" type="xs:string"/>
+          <xs:element minOccurs="0" name="localRateInd" type="xs:string"/>
+          <xs:element minOccurs="0" name="localTaxType" type="xs:string"/>
+          <xs:element minOccurs="0" name="countyTransitRate" type="xs:string"/>
+          <xs:element minOccurs="0" name="countyTransitTax" type="xs:string"/>
+          <xs:element minOccurs="0" name="cityTransitRate" type="xs:string"/>
+          <xs:element minOccurs="0" name="cityTransitTax" type="xs:string"/>
+          <xs:element minOccurs="0" name="currency" type="xs:string"/>
+          <xs:element minOccurs="0" name="stateOrProvince" type="xs:string"/>
+          <xs:element minOccurs="0" name="county" type="xs:string"/>
+          <xs:element minOccurs="0" name="countyLocalRate" type="xs:string"/>
+          <xs:element minOccurs="0" name="city" type="xs:string"/>
+          <xs:element minOccurs="0" name="cityLocalRate" type="xs:string"/>
+          <xs:element minOccurs="0" name="country" type="xs:string"/>
+          <xs:element minOccurs="0" name="processedMillis" type="xs:string"/>
+          <xs:element minOccurs="0" name="processedDate" type="xs:dateTime"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="exceptions" type="tns:taxCalculationResponseError"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="lineItems" type="tns:taxCalculationResponseLineItem"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="taxCalculationResponseError">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="code" type="xs:string"/>
+          <xs:element minOccurs="0" name="data" type="xs:string"/>
+          <xs:element minOccurs="0" name="severity" type="xs:string"/>
+          <xs:element minOccurs="0" name="location" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="taxCalculationResponseLineItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="type" type="xs:string"/>
+          <xs:element minOccurs="0" name="productId" type="xs:string"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element minOccurs="0" name="quantity" type="xs:int"/>
+          <xs:element minOccurs="0" name="amount" type="xs:string"/>
+          <xs:element minOccurs="0" name="extendedAmount" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="calculateTax">
+    <wsdl:part element="tns:calculateTax" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="calculateTaxResponse">
+    <wsdl:part element="tns:calculateTaxResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="TaxcalcService">
+    <wsdl:operation name="calculateTax">
+      <wsdl:input message="tns:calculateTax" name="calculateTax"></wsdl:input>
+      <wsdl:output message="tns:calculateTaxResponse" name="calculateTaxResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TaxcalcServiceServiceSoapBinding" type="tns:TaxcalcService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="calculateTax">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="calculateTax">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="calculateTaxResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TaxcalcServiceService">
+    <wsdl:port binding="tns:TaxcalcServiceServiceSoapBinding" name="TaxcalcServicePort">
+      <soap:address location="http://localhost:8080/grails-cxf-test/services/taxcalc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/grails-cxf-test/services/taxcalc</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="calculateTax" bindingOperationName="calculateTax" type="Request-Response" outputName="calculateTaxResponse" inputName="calculateTax" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/grails-cxf-test/services/taxcalc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://soap.oursite.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:calculateTax>
+         <taxCalcReq>
+            <uuid>UUID</uuid>
+            <originSystem>ORIGIN</originSystem>
+            <originApplication>MINNEAPOLIS</originApplication>
+            <version>2013-03-21T00:00:00.000-05:00</version>
+            <writeTaxRegistry>Y</writeTaxRegistry>
+            <transactionDate>2013-03-21T00:00:00.000-05:00</transactionDate>
+            <transactionType>A</transactionType>
+            <taxableAmount>12.00</taxableAmount>
+            <customerExempt>I LOVE TURTLES</customerExempt>
+            <orderNumber>1234</orderNumber>
+            <taxLocation>
+               <addressLine1>1234 Here St</addressLine1>
+               <country>US</country>
+               <city>Minneapolis</city>
+               <county>Hennepin</county>
+               <stateOrProvince>MN</stateOrProvince>
+               <postalCode>55401</postalCode>
+            </taxLocation>
+            <quantity>1.00</quantity>
+            <extendedPrice>12.00</extendedPrice>
+            <freightAmt>1.00</freightAmt>
+            <processedMillis>1</processedMillis>
+            <lineItems>
+               <type>1</type>
+               <productId>2</productId>
+               <description>3</description>
+               <quantity>4</quantity>
+               <amount>5.00</amount>
+               <extendedAmount>6.00</extendedAmount>
+            </lineItems>
+         </taxCalcReq>
+      </soap:calculateTax>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.oursite.com/TaxcalcService/calculateTax"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:databaseConnectionContainer/></con:soapui-project>
